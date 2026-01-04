@@ -3,6 +3,8 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Paper, private_createTy
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { baseurl } from '../../api';
+
 
 export default function Edit() {
   // const params=useParams()
@@ -16,7 +18,7 @@ export default function Edit() {
   const [isloading,setisloading]=useState(false)
   const fetchsingleexp=async()=>{
     try {
-      const res=await axios.get(`http://localhost:7777/api/expense/get/${id}`)
+      const res=await axios.get(`${baseurl}/api/expense/get/${id}`)
       // console.log(res.data)
       if (res.data.success) {
         setformdata(res.data.expensedetail)
@@ -35,7 +37,7 @@ export default function Edit() {
     setisloading(true)
     try {
       const res=await 
-      axios.put(`http://localhost:7777/api/expense/update/${id}`,formdata)
+      axios.put(`${baseurl}/api/expense/update/${id}`,formdata)
       // console.log(res)
       if (res.data.success) {
          setTimeout(()=>{
