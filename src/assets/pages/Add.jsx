@@ -3,6 +3,8 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Paper, private_createTy
 import { Link, useNavigate } from 'react-router-dom'
 import axios from "axios";
 import { toast } from 'react-toastify';
+import { baseurl } from '../../api';
+
 export default function Add() {
   const [formdata,setformdata]=useState({
     title:"",
@@ -16,7 +18,7 @@ export default function Add() {
     setisloading(true)
     try {
       const res=await 
-      axios.post(`http://localhost:7777/api/expense/insert`,formdata)
+      axios.post(`${baseurl}/api/expense/insert`,formdata)
       // console.log(res)
       if (res.data.success) {
          setTimeout(()=>{

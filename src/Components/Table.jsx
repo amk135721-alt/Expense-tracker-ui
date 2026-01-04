@@ -9,13 +9,14 @@ import moment from "moment"
 import { Button } from '@mui/material';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
 import { Link } from 'react-router-dom';
+import { baseurl } from '../api';
+ 
 
 export default function ExpenseTable({allexp,fetchallexpenses}) {
   const handledelete=async(expenseid)=>{
     try {
-      const res=await axios.delete(`http://localhost:7777/api/expense/delete/${expenseid}`)
+      const res=await axios.delete(`${baseurl}/api/expense/delete/${expenseid}`)
       // console.log(res.data)
       if (res.data.success) {
 
